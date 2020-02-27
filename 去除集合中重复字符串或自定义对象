@@ -1,0 +1,60 @@
+package ArrayListDemo;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/**
+ * 删除集合中的字符串重复值
+ * 分析：
+ * 	a.create Collection Obeject
+ * 	b.add String
+ * 	c.create new Collection
+ * 	d.traverse old collection ,get new element
+ * 	e.find the element in new collection ,exist?
+ * 		yes:the next
+ * 		no:add
+ * 	f.traverse the new collection
+ * 
+ *
+ */
+public class ArrayListDemo1 {
+	public static void main(String[] args) {
+		// a.create Collection Obeject
+		ArrayList array = new ArrayList();
+
+		// b.add String
+		array.add("hello");
+		array.add("world");
+		array.add("java");
+		array.add("world");
+		array.add("world");
+		array.add("world");
+		array.add("java");
+		array.add("java");
+		array.add("java");
+		array.add("java");
+
+		// c.create new Collection
+		ArrayList newArray = new ArrayList();
+
+		// d.traverse old collection ,get new element
+		Iterator it = array.iterator();
+		while (it.hasNext()) {
+			String s = (String) it.next();
+
+			// e.find the element in new collection ,exist?
+			// yes:the next
+			// no:add
+			if(!newArray.contains(s)) {
+				newArray.add(s);
+			}
+		}
+
+		// f.traverse the new collection
+		Iterator new_it = newArray.iterator();
+		while (new_it.hasNext()) {
+			String s1 = (String) new_it.next();
+			System.out.println(s1);
+		}
+	}
+}
