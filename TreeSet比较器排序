@@ -1,0 +1,72 @@
+package TreeSet3;
+
+import java.util.Comparator;
+import java.util.TreeSet;
+
+public class TreeSet3Demo {
+	public static void main(String[] args) {
+		// 自然排序
+		// TreeSet<Student> ts = new TreeSet<Student>();
+		// public TreeSet(Comparator comparator) //比较器排序
+		// TreeSet<Student> ts = new TreeSet<Student>(new MyComparator()); 
+		// 方式一：使用匿名内部类
+		TreeSet<Student> ts = new TreeSet<Student>(new Comparator<Student>() {
+			@Override
+			public int compare(Student s1, Student s2) {
+				// TODO Auto-generated method stub
+				// 姓名长度
+				int num = s1.getName().length() - s2.getName().length();
+				// 姓名内容
+				int num2 = num == 0 ? s1.getName().compareTo(s2.getName()) : num;
+				// 年龄
+				int num3 = num2 == 0 ? s1.getAge() - s2.getAge() : num2;
+				return num3;
+			}
+		});
+
+		Student s1 = new Student("zhangxueyou", 27);
+		Student s2 = new Student("liudehua", 28);
+		Student s3 = new Student("zhangguorong", 30);
+		Student s4 = new Student("liming", 32);
+		Student s5 = new Student("zhangxueyou", 27);
+		Student s6 = new Student("guanzhengjie", 50);
+		Student s7 = new Student("linzixiang", 49);
+		Student s8 = new Student("zhaoqi", 27);
+		Student s9 = new Student("zhangxueyou", 23);
+
+		ts.add(s1);
+		ts.add(s2);
+		ts.add(s3);
+		ts.add(s4);
+		ts.add(s5);
+		ts.add(s6);
+		ts.add(s7);
+		ts.add(s8);
+		ts.add(s9);
+
+		for (Student s : ts) {
+			System.out.println(s.getName() + "---" + s.getAge());
+		}
+	}
+}
+
+
+//方式二：实现接口
+public class MyComparator implements Comparator<Student> {
+
+	@Override
+	public int compare(Student s1, Student s2) {
+		// int num = this.name.length() - s.name.length();
+		// this -- s1
+		// s -- s2
+		// 姓名长度
+		int num = s1.getName().length() - s2.getName().length();
+		// 姓名内容
+		int num2 = num == 0 ? s1.getName().compareTo(s2.getName()) : num;
+		// 年龄
+		int num3 = num2 == 0 ? s1.getAge() - s2.getAge() : num2;
+
+		return num3;
+	}
+
+}
