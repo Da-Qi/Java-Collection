@@ -1,0 +1,131 @@
+package HashMap;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+
+public class HashMapDemo {
+	public static void main(String[] args) {
+		HashMap<String, HashMap<String, ArrayList<Student>>> czbkMap = new HashMap<String, HashMap<String, ArrayList<Student>>>();
+
+		// 北京校区数据
+		HashMap<String, ArrayList<Student>> bjCzbkMap = new HashMap<String, ArrayList<Student>>();
+		ArrayList<Student> array1 = new ArrayList<Student>();
+		//基础班的学生
+		Student s1  = new Student("张学友",30);
+		Student s2  = new Student("刘德华",31);
+		//添加学生
+		array1.add(s1);
+		array1.add(s2);
+		//添加班级
+		bjCzbkMap.put("基础班", array1);
+		
+		ArrayList<Student> array2 = new ArrayList<Student>();
+		//就业班学生
+		Student s3  = new Student("赵雅芝",22);
+		Student s4  = new Student("白娘子",21);
+		
+		array2.add(s3);
+		array2.add(s4);
+		
+		bjCzbkMap.put("就业班", array2);
+		
+		czbkMap.put("北京校区", bjCzbkMap);
+		
+		
+		
+		//上海校区数据
+		HashMap<String, ArrayList<Student>> shCzbkMap = new HashMap<String, ArrayList<Student>>();
+		ArrayList<Student> array3 = new ArrayList<Student>();
+		//基础班的学生
+		Student s31  = new Student("黎明",25);
+		Student s32  = new Student("郭富城",22);
+		//添加学生
+		array3.add(s31);
+		array3.add(s32);
+		//添加班级
+		shCzbkMap.put("基础班", array3);
+		
+		ArrayList<Student> array4 = new ArrayList<Student>();
+		//就业班学生
+		Student s41  = new Student("赵雅芝",22);
+		Student s42  = new Student("白娘子",21);
+		
+		array4.add(s41);
+		array4.add(s42);
+		
+		shCzbkMap.put("就业班", array4);
+		
+		czbkMap.put("上海校区", shCzbkMap);
+		
+		//广州校区
+		HashMap<String, ArrayList<Student>> gzCzbkMap = new HashMap<String, ArrayList<Student>>();
+		ArrayList<Student> array5 = new ArrayList<Student>();
+		//基础班的学生
+		Student s51  = new Student("李寻欢",35);
+		Student s52  = new Student("贾静雯",18);
+		//添加学生
+		array5.add(s51);
+		array5.add(s52);
+		//添加班级
+		gzCzbkMap.put("基础班", array5);
+		
+		ArrayList<Student> array6 = new ArrayList<Student>();
+		//就业班学生
+		Student s61  = new Student("万三千",55);
+		Student s62  = new Student("鲁智深",39);
+		
+		array6.add(s61);
+		array6.add(s62);
+		
+		gzCzbkMap.put("就业班", array6);
+		
+		czbkMap.put("广州校区", gzCzbkMap);
+		
+		//西安校区
+		HashMap<String, ArrayList<Student>> xaCzbkMap = new HashMap<String, ArrayList<Student>>();
+		ArrayList<Student> array7 = new ArrayList<Student>();
+		//基础班的学生
+		Student s71  = new Student("风流",3);
+		Student s72  = new Student("倜傥",4);
+		//添加学生
+		array7.add(s71);
+		array7.add(s72);
+		//添加班级
+		xaCzbkMap.put("基础班", array7);
+		
+		ArrayList<Student> array8 = new ArrayList<Student>();
+		//就业班学生
+		Student s81  = new Student("玉面",12);
+		Student s82  = new Student("飞龙",13);
+		
+		array8.add(s81);
+		array8.add(s82);
+		
+		xaCzbkMap.put("就业班", array8);
+		
+		czbkMap.put("西安校区", xaCzbkMap);
+		
+		Set<String> czbkset = czbkMap.keySet();
+		for(String strczbk:czbkset) {
+			System.out.println(strczbk);
+			HashMap<String, ArrayList<Student>> values1 = czbkMap.get(strczbk);
+			Set<String> set2 = values1.keySet();
+			for(String xqset:set2) {
+				System.out.println("\t"+xqset);
+				ArrayList<Student> values2 = values1.get(xqset);
+				for(Student s:values2) {
+					System.out.println("\t\t"+s.getName()+"\t"+s.getAge());
+				}
+				
+				// Iterator<Student> it = values2.iterator();
+				// while(it.hasNext()) {
+				// Student stu = it.next();
+				// System.out.println("\t\t"+stu.getName()+"\t"+stu.getAge());
+				// }
+			}
+		}
+		
+	}
+}
