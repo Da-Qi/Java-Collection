@@ -1,0 +1,49 @@
+package Map;
+
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeMap;
+
+/**
+ * 需求：获取字符串中每一个字母出现的次数，要求结果如:a(2)b(1)c(2)
+ *
+ *
+ */
+public class TreeMapDemo {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("请输入一个字符串：");
+		String line = scan.nextLine();
+		
+		//创建TreeMap
+		TreeMap<Character,Integer> tm = new TreeMap<Character,Integer>();
+		
+		//字符串转换为字符数组
+		char[] chs = line.toCharArray();
+		
+		//遍历字符串，得到每一个字符
+		for(char ch:chs) {
+			Integer i = tm.get(ch);
+			if(i == null) {
+				tm.put(ch, 1);
+			}else {
+				i++;
+				tm.put(ch, i);
+			}
+		}
+		
+		//定义字符串缓冲区变量
+		StringBuilder sb = new StringBuilder();
+		
+		//遍历集合，得到键和值，进行拼接；
+		Set<Character> set = tm.keySet();
+		for(Character s :set) {
+			Integer i = tm.get(s);
+			sb.append(s).append("(").append(i).append(")");
+		}
+		
+		//把字符串缓冲区转换为字符串输出
+		System.out.println(sb.toString());
+		
+	}
+}
