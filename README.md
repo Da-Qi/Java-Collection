@@ -24,3 +24,11 @@
 a.自然排序：实现接口Comparable，重写方法，设置先后条件；
 
 b.比较器排序：实现接口Comparator，通过匿名内部类或者重写实现；
+
+
+## 集合的遍历
+A. 增强for
+
+B. 迭代器排序
+
+Iterator it = 集合.iterator();   调用 hasNext()、next()方法实现遍历
